@@ -1,0 +1,22 @@
+{% extends "html5_page_with_bootsrap_to_be_extended.html.twig" %}
+
+{% block title %}Kundenkonto erstellen{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h2>Kundenkonto erstellen</h2>
+        <h3>Ihre Rechnungsadresse</h3>
+      </div>
+      <div class="panel-body">
+        {{ form( form ) }}
+        <p class="pflichtfeld_erklaerung">* Pflichtfelder</p>
+        <p class="datenschutz_hinweis">Mit der Registrierung erkläre ich mich mit den <a class="datenschutz_verweis" href="/datenschutz">Datenschutzbestimmungen</a> einverstanden</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

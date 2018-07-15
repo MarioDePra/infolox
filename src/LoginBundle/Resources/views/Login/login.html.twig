@@ -1,0 +1,48 @@
+{% extends "html5_page_with_bootsrap_to_be_extended.html.twig" %}
+
+{% block title %}
+LoginBundle:Login:login
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3>Login page</h3>
+      </div>
+      <div class="panel-body">
+        {% if fehler %}
+          <div class="alert alert-danger">
+            {{ fehler.messageKey|trans(fehler.messageData, 'security') }}
+          </div>
+        {% endif %}
+        <form action="{{ path('login') }}" method="post">
+          <div class="form-group has-error">
+            <label class="control-label" for="kennung">Kennung:</label>
+            <input class="form-control" type="email" name="_username" id="username" aria-describedby="email_help" />
+            <p id="email_help" class="help-block">You must include a valid email address.</p>
+          </div>
+          <!-- div class="form-group">
+            <select class="form-control" name="_kennung" id="kennung">
+              <option value="North">North</option>
+            </select>
+          </div -->
+          <div class="form-group">
+            <label class="control-label" for="password">Passwort:</label>
+            <input class="form-control" type="password" name="_password" id="password" />
+          </div>
+          <button class="btn btn-info pull-right">Anmeldung</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block javascripts %}
+  $( function() {
+    $("#username").autocomplete({
+      source: [ {{ usernames|raw }} ]
+    });
+  } );
+{% endblock %}

@@ -13,9 +13,26 @@
         <h3>Ihre Rechnungsadresse</h3>
       </div>
       <div class="panel-body">
-        {{ form( form ) }}
-        <p class="pflichtfeld_erklaerung">* Pflichtfelder</p>
-        <p class="datenschutz_hinweis">Mit der Registrierung erkläre ich mich mit den <a class="datenschutz_verweis" href="/datenschutz">Datenschutzbestimmungen</a> einverstanden</p>
+
+        {{ form_start(form) }}
+          {{ form_row(form.firma) }}
+          {{ form_row(form.ust_id) }}
+          {{ form_row(form.herr) }}
+          {{ form_row(form.vorname) }}
+          {{ form_row(form.nachname) }}
+          {{ form_row(form.adresse) }}
+          {{ form_row(form.plz) }}
+          {{ form_row(form.ort) }}
+          {{ form_row(form.land) }}
+          {{ form_row(form.telefon) }}
+          {{ form_row(form.fax) }}
+          {{ form_row(form.username) }}
+          {{ form_row(form.password) }}
+          <p class="pflichtfeld_erklaerung">* Pflichtfelder</p>
+          <p class="datenschutz_hinweis">Mit der Registrierung erkläre ich mich mit den <a class="datenschutz_verweis" href="/datenschutz">Datenschutzbestimmungen</a> einverstanden</p>
+          {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+
       </div>
     </div>
   </div>

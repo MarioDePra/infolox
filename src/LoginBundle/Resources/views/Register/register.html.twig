@@ -3,7 +3,50 @@
 {% block title %}Kundenkonto erstellen{% endblock %}
 
 {% block stylesheets %}
+label { display:none; }
+
+select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+input[type="text"], input[type="password"] {
+  background-color:#EEE;
+  color:#AAA;
+  border:1px #555 solid;
+  border-radius:0px;
+}
 {% endblock %}
+
+
+{% block javascripts %}
+
+$( "form input:text, input:password" )
+.each( function( index ) { 
+  setValue( $(this) );
+  $(this).focus( function() { setValue( $(this) ); return; } );
+  $(this).focusout( function() { setValue( $(this) ); return; } );
+});
+
+
+function setValue( oInput ) {
+  var sValue = oInput.val();
+  var sLabel = oInput.prev().text();
+  if ( sValue === '' ) {
+    oInput.val( sLabel );
+    oInput.get(0).type = 'text';
+  } else if ( sValue === sLabel ) {
+    oInput.val( '' );
+    oInput.get(0).type = 'password';
+  } else {
+  }
+  return;
+}
+
+{% endblock %}
+
 
 {% block body %}
   <div class="container">

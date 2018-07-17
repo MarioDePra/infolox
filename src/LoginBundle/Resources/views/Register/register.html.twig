@@ -23,6 +23,10 @@ input[type="text"], input[type="password"] {
 
 {% block javascripts %}
 
+var SHOW_HIDE_CLASS = 'show_hide_class';
+
+$( "form input:password" ).addClass(SHOW_HIDE_CLASS);
+
 $( "form input:text, input:password" )
 .each( function( index ) { 
   setValue( $(this) );
@@ -36,10 +40,14 @@ function setValue( oInput ) {
   var sLabel = oInput.prev().text();
   if ( sValue === '' ) {
     oInput.val( sLabel );
-    oInput.get(0).type = 'text';
+    if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
+      oInput.get(0).type = 'text';
+    }
   } else if ( sValue === sLabel ) {
     oInput.val( '' );
-    oInput.get(0).type = 'password';
+    if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
+      oInput.get(0).type = 'password';
+    }
   } else {
   }
   return;

@@ -12,6 +12,7 @@
   use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
   use Symfony\Component\Form\Extension\Core\Type\CountryType;
   use Symfony\Component\OptionsResolver\OptionsResolver;
+  use Symfony\Component\Intl\Intl;
   use LoginBundle\Entity\User;
   
   class UserType extends AbstractType
@@ -97,9 +98,11 @@ HINWEIS: wie AbstractType
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('land', CountryType::class, array(
-        'label' => $this->bauePflichtfeldText('Land'),
+//        'choices' => Intl::getRegionBundle()->getCountryNames('DE'),
+//        'choice_loader' => null,
         'required' => true,
-        'invalid_message' => PFLICHTFELD_HINWEIS
+        'invalid_message' => PFLICHTFELD_HINWEIS,
+        'attr' => [ 'class' => 'land' ]
       ))
       ->add('telefon', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Telefon'),
@@ -126,7 +129,8 @@ HINWEIS: wie AbstractType
       ))
       ->add('submit', SubmitType::class, array(
         'label' => 'Speichern',
-        'attr' => [ 'class' => 'btn btn-success pull-right' ]
+//        'attr' => [ 'class' => 'btn btn-success pull-right' ]
+        'attr' => [ 'class' => 'speichern btn pull-right' ]
       ));
     }
     

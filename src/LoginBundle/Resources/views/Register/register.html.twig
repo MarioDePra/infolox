@@ -3,14 +3,8 @@
 {% block title %}Kundenkonto erstellen{% endblock %}
 
 {% block stylesheets %}
-label { display:none; }
 
-select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-}
+label { display:none; }
 
 input[type="text"], input[type="password"] {
   background-color:#EEE;
@@ -18,6 +12,29 @@ input[type="text"], input[type="password"] {
   border:1px #555 solid;
   border-radius:0px;
 }
+
+.land {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border:none;
+  background-color:#EEE;
+  border:1px #555 solid;
+  border-radius:0px;
+  background-image: url(pfeil_nach_unten.png);
+  background-position: right center;
+  background-repeat: no-repeat;
+  
+}
+
+.speichern {
+  background-color:#EEE;
+  color:#000;
+  border:1px #555 solid;
+  border-radius:0px;
+}
+
+
 {% endblock %}
 
 
@@ -27,8 +44,7 @@ var SHOW_HIDE_CLASS = 'show_hide_class';
 
 $( "form input:password" ).addClass(SHOW_HIDE_CLASS);
 
-$( "form input:text, input:password" )
-.each( function( index ) { 
+$( "form input:text, input:password" ).each( function( index ) { 
   setValue( $(this) );
   $(this).focus( function() { setValue( $(this) ); return; } );
   $(this).focusout( function() { setValue( $(this) ); return; } );

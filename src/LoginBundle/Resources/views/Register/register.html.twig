@@ -4,7 +4,8 @@
 
 {% block stylesheets %}
 
-label { display:none; }
+label { display: none; }
+label[for="user_herr_0"], label[for="user_herr_1"] { display: block; }
 
 input[type="text"], input[type="password"] {
   background-color:#EEE;
@@ -24,7 +25,6 @@ input[type="text"], input[type="password"] {
   background-image: url(pfeil_nach_unten.png);
   background-position: right center;
   background-repeat: no-repeat;
-  
 }
 
 .speichern {
@@ -40,31 +40,56 @@ input[type="text"], input[type="password"] {
 
 {% block javascripts %}
 
-var SHOW_HIDE_CLASS = 'show_hide_class';
+$(document).ready( function() { 
 
-$( "form input:password" ).addClass(SHOW_HIDE_CLASS);
+  $("form").submit(function(e) {
+    $( "form input:text, input:password" ).each( function( index ) { 
+      adjustValue( $(this) );
+      return;
+    });
+    return;
+  });
 
-$( "form input:text, input:password" ).each( function( index ) { 
-  setValue( $(this) );
-  $(this).focus( function() { setValue( $(this) ); return; } );
-  $(this).focusout( function() { setValue( $(this) ); return; } );
+  $( "form input:password" ).addClass( SHOW_HIDE_CLASS );
+
+  $( "form input:text, input:password" ).each(function( index ) { 
+    adjustValue( $(this) );
+    setHandler( $(this) );
+    return;
+  });
+
 });
 
+var SHOW_HIDE_CLASS = 'show_hide_class';
 
-function setValue( oInput ) {
-  var sValue = oInput.val();
-  var sLabel = oInput.prev().text();
-  if ( sValue === '' ) {
-    oInput.val( sLabel );
-    if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
-      oInput.get(0).type = 'text';
+function setHandler( oInput ) {
+  try {
+    oInput.focus( function() { adjustValue( oInput ); return; } );
+    oInput.focusout( function() { adjustValue( oInput ); return; } );
+  } catch( oException ) {
+    alert(oException);
+  }
+  return;
+}
+
+function adjustValue( oInput ) {
+  try {
+    var sValue = oInput.val();
+    var sLabel = oInput.prev().text();
+    if ( sValue === '' ) {
+      oInput.val( sLabel );
+      if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
+        oInput.get(0).type = 'text';
+      }
+    } else if ( sValue === sLabel ) {
+      oInput.val( '' );
+      if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
+        oInput.get(0).type = 'password';
+      }
+    } else {
     }
-  } else if ( sValue === sLabel ) {
-    oInput.val( '' );
-    if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
-      oInput.get(0).type = 'password';
-    }
-  } else {
+  } catch( oException ) {
+    alert(oException);
   }
   return;
 }

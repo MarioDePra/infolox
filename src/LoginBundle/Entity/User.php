@@ -5,8 +5,8 @@
   use Doctrine\ORM\Mapping as ORM;
   use Symfony\Component\Security\Core\User\UserInterface;
   use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;  
-  use Symfony\Component\Validator\Constraints as Assert;
-  use LoginBundle\Validator\Constraints as UStIdBeiFirmaAssert;
+  use Symfony\Component\Validator\Constraints as SymfonyConstraints;
+  use LoginBundle\Validator\Constraints as LoginBundleConstraints;
 
   
 /**
@@ -15,7 +15,7 @@
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="LoginBundle\Repository\UserRepository")
  * @UniqueEntity(fields="username", message="Dieser Anwender ist bereits registriert")
- * @UStIdBeiFirmaAssert\UStIdBeiFirmaConstraint
+ * @LoginBundleConstraints\UStIdBeiFirmaConstraint
  */
   class User implements UserInterface
   {
@@ -39,6 +39,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $nachname;
 
@@ -46,6 +48,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
+     * 
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $firma;
     
@@ -60,6 +64,8 @@
      * @var boolean
      *
      * @ORM\Column(type="boolean" )
+     * 
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $herr;
 
@@ -67,6 +73,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     * 
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $adresse;
 
@@ -74,6 +82,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=5)
+     * 
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $plz;
 
@@ -81,6 +91,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $ort;
     
@@ -88,6 +100,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     * 
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $land;
 
@@ -95,6 +109,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $telefon;
 
@@ -109,7 +125,9 @@
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
-     * @Assert\Email()
+     * @SymfonyConstraints\Email()
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $username;
 
@@ -117,6 +135,8 @@
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=255)
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $password;
 

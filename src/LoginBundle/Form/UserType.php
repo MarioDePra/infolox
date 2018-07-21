@@ -61,52 +61,44 @@ HINWEIS: wie AbstractType
         'expanded' => true,
         'multiple' => false,
         'choices' => array('Herr' => true, 'Frau' => false),
-        'choice_label' => function ($choiceValue, $key, $value) {
-          if ( $choiceValue == true ) {
-            return 'Herr';
-          }
-          return 'Frau';
-          // or if you want to translate some key
-          //return 'form.choice.'.$key;
-        },
         'required' => true,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('vorname', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Vorname'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('nachname', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Nachname'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('adresse', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Straße, Nr'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('plz', TextType::class, array(
         'label' => $this->bauePflichtfeldText('PLZ'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('ort', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Ort'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('land', CountryType::class, array(
 //        'choices' => Intl::getRegionBundle()->getCountryNames('DE'),
 //        'choice_loader' => null,
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS,
         'attr' => [ 'class' => 'land' ]
       ))
       ->add('telefon', TextType::class, array(
         'label' => $this->bauePflichtfeldText('Telefon'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('fax', TextType::class, array(
@@ -115,12 +107,12 @@ HINWEIS: wie AbstractType
       ))
       ->add('username', TextType::class, array(
         'label' => $this->bauePflichtfeldText('E-Mail'),
-        'required' => true,
+        'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       // https://symfony.com/doc/3.4/reference/forms/types/repeated.html
       ->add('password', RepeatedType::class, array(
-        'required' => true,
+        'required' => false,
         'invalid_message' => 'Wiederholung des Passworts inkorrekt',
         'type' => PasswordType::class,
         'options' => array( 'attr' => array('class' => 'password-field') ),

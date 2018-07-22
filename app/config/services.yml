@@ -42,7 +42,7 @@ services:
         tags: [ 'doctrine.fixture.orm' ]
         
 
-        on_kernel_request_listener:
+    on_kernel_request_listener:
         class: LoginBundle\Event\OnKernelRequestListener
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 320 }

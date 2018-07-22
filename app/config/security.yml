@@ -36,6 +36,7 @@ security:
               login_path: login
               check_path: login
             
+            provider: db_provider
 
     access_control:
         - { path: ^/register$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

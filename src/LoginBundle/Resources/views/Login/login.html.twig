@@ -1,7 +1,7 @@
 {% extends "html5_page_with_bootsrap_to_be_extended.html.twig" %}
 
 {% block title %}
-LoginBundle:Login:login
+Bitte anmelden
 {% endblock %}
 
 {% block body %}
@@ -19,8 +19,8 @@ LoginBundle:Login:login
         <form action="{{ path('login') }}" method="post">
           <div class="form-group has-error">
             <label class="control-label" for="kennung">Kennung:</label>
-            <input class="form-control" type="email" name="_username" id="username" aria-describedby="email_help" />
-            <p id="email_help" class="help-block">You must include a valid email address.</p>
+            <input id="username" name="_username" class="form-control" type="email" aria-describedby="email_help" />
+            <p id="email_help" class="help-block">Bitte gegben Sie ein E-Mail Adresse ein.</p>
           </div>
           <!-- div class="form-group">
             <select class="form-control" name="_kennung" id="kennung">
@@ -29,7 +29,7 @@ LoginBundle:Login:login
           </div -->
           <div class="form-group">
             <label class="control-label" for="password">Passwort:</label>
-            <input class="form-control" type="password" name="_password" id="password" />
+            <input id="password" name="_password" class="form-control" type="password" />
           </div>
           <button class="btn btn-info pull-right">Anmeldung</button>
         </form>

@@ -32,6 +32,8 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255)
+     *
+     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $vorname;
 
@@ -48,8 +50,6 @@
      * @var string
      *
      * @ORM\Column(type="string", length=255, nullable=true)
-     * 
-     * @LoginBundleConstraints\PflichtfeldConstraint
      */
     private $firma;
     

@@ -14,6 +14,7 @@ class UStIdBeiFirmaConstraint extends Constraint
     
     public function validatedBy() {
         return 'ust_id_bei_firma_validator';
+//        return 'LoginBundle\Validator\Constraints\UStIdBeiFirmaValidator';
     }
 
     public function getTargets() {

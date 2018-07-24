@@ -10,7 +10,7 @@ class OnKernelRequestListener
     {
         $request = $getResponseEvent->getRequest();
         $request->setLocale('de');
-        dump( 'LoginBundle\Event\OnKernelRequestListener\onKernelRequest\(GetResponseEvent $getResponseEvent)');
+ //       dump( 'LoginBundle\Event\OnKernelRequestListener\onKernelRequest\(GetResponseEvent $getResponseEvent)');
     }
 
 }

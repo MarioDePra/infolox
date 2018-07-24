@@ -17,31 +17,6 @@
   
   class UserType extends AbstractType
   {
-/*
-type Symfony\Component\Form\AbstractType.php | find "function"
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    public function buildView(FormView $view, FormInterface $form, array $options)
-    public function finishView(FormView $view, FormInterface $form, array $options)
-    public function configureOptions(OptionsResolver $resolver)
-    public function getBlockPrefix()
-    public function getParent()
-type Symfony\Component\Form\FormBuilderInterface.php | find "function"
-    public function add($child, $type = null, array $options = array());
-    public function create($name, $type = null, array $options = array());
-    public function get($name);
-    public function remove($name);
-    public function has($name);
-    public function all();
-    public function getForm();
-type Symfony\Component\Form\FormTypeInterface.php | find "function"
-    public function buildForm(FormBuilderInterface $builder, array $options);
-    public function buildView(FormView $view, FormInterface $form, array $options);
-    public function finishView(FormView $view, FormInterface $form, array $options);
-    public function configureOptions(OptionsResolver $resolver);
-    public function getBlockPrefix();
-    public function getParent();
-HINWEIS: wie AbstractType
-*/
 
     public function buildForm( FormBuilderInterface $formBuilder, array $options ) {
       define( 'PFLICHTFELD_HINWEIS', 'Pflichtfeld' );
@@ -49,11 +24,11 @@ HINWEIS: wie AbstractType
       
       $formBuilder
       ->add('firma', TextType::class, array(
-        'label' => 'Firma',
-        'required' => false
+        'attr' => [ 'placeholder' => 'Firma' ],
+        'required' => false,
       ))
       ->add('ust_id', TextType::class, array(
-        'label' => 'USt-Id',
+        'attr' => [ 'placeholder' =>'USt-Id' ],
         'required' => false
       ))
       ->add('herr', ChoiceType::class, array(
@@ -65,48 +40,48 @@ HINWEIS: wie AbstractType
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('vorname', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('Vorname'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Vorname') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('nachname', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('Nachname'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Nachname') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('adresse', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('Straße, Nr'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Straße, Nr') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('plz', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('PLZ'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('PLZ') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('ort', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('Ort'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Ort') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('land', CountryType::class, array(
 //        'choices' => Intl::getRegionBundle()->getCountryNames('DE'),
 //        'choice_loader' => null,
-        'required' => false,
+        'required' => true,
         'invalid_message' => PFLICHTFELD_HINWEIS,
         'attr' => [ 'class' => 'land' ]
       ))
       ->add('telefon', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('Telefon'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Telefon') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
       ->add('fax', TextType::class, array(
-        'label' => 'Fax',
+        'attr' => [ 'placeholder' => 'Fax' ],
         'required' => false,
       ))
       ->add('username', TextType::class, array(
-        'label' => $this->bauePflichtfeldText('E-Mail'),
+        'attr' => [ 'placeholder' => $this->bauePflichtfeldText('E-Mail') ],
         'required' => false,
         'invalid_message' => PFLICHTFELD_HINWEIS
       ))
@@ -116,13 +91,13 @@ HINWEIS: wie AbstractType
         'invalid_message' => 'Wiederholung des Passworts inkorrekt',
         'type' => PasswordType::class,
         'options' => array( 'attr' => array('class' => 'password-field') ),
-        'first_options'  => array( 'label' => $this->bauePflichtfeldText('Passwort') ),
-        'second_options' => array( 'label' => $this->bauePflichtfeldText('Passwort wiederholen') )
+        'first_options'  => array( 'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Passwort') ] ),
+        'second_options' => array( 'attr' => [ 'placeholder' => $this->bauePflichtfeldText('Passwort wiederholen') ] )
       ))
       ->add('submit', SubmitType::class, array(
         'label' => 'Speichern',
 //        'attr' => [ 'class' => 'btn btn-success pull-right' ]
-        'attr' => [ 'class' => 'speichern btn pull-right' ]
+        'attr' => [ 'class' => 'speichern btn pull-right show-arrow' ]
       ));
     }
     

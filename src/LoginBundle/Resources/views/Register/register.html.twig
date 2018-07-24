@@ -7,28 +7,17 @@
 label { display: none; }
 label[for="user_herr_0"], label[for="user_herr_1"] { display: block; }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], .land {
   background-color:#EEE;
-  color:#AAA;
+  color:#666;
   border:1px #555 solid;
   border-radius:0px;
 }
 
-.land {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border:none;
-  background-color:#EEE;
-  border:1px #555 solid;
-  border-radius:0px;
-  background-image: url(pfeil_nach_unten.png);
-  background-position: right center;
-  background-repeat: no-repeat;
-}
+.list-unstyled { color:red; }
 
 .speichern {
-  background-color:#EEE;
+  background-color:#FFF;
   color:#000;
   border:1px #555 solid;
   border-radius:0px;
@@ -37,63 +26,7 @@ input[type="text"], input[type="password"] {
 
 {% endblock %}
 
-
 {% block javascripts %}
-
-$(document).ready( function() { 
-
-  $("form").submit(function(e) {
-    $( "form input:text, input:password" ).each( function( index ) { 
-      adjustValue( $(this) );
-      return;
-    });
-    return;
-  });
-
-  $( "form input:password" ).addClass( SHOW_HIDE_CLASS );
-
-  $( "form input:text, input:password" ).each(function( index ) { 
-    adjustValue( $(this) );
-    setHandler( $(this) );
-    return;
-  });
-
-});
-
-var SHOW_HIDE_CLASS = 'show_hide_class';
-
-function setHandler( oInput ) {
-  try {
-    oInput.focus( function() { adjustValue( oInput ); return; } );
-    oInput.focusout( function() { adjustValue( oInput ); return; } );
-  } catch( oException ) {
-    alert(oException);
-  }
-  return;
-}
-
-function adjustValue( oInput ) {
-  try {
-    var sValue = oInput.val();
-    var sLabel = oInput.prev().text();
-    if ( sValue === '' ) {
-      oInput.val( sLabel );
-      if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
-        oInput.get(0).type = 'text';
-      }
-    } else if ( sValue === sLabel ) {
-      oInput.val( '' );
-      if ( oInput.hasClass(SHOW_HIDE_CLASS) ) {
-        oInput.get(0).type = 'password';
-      }
-    } else {
-    }
-  } catch( oException ) {
-    alert(oException);
-  }
-  return;
-}
-
 {% endblock %}
 
 
